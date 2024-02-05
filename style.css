@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --top--bottom: 195;
+  --hue: 240;
+  --footer-color-blue-clear: hsl(var(--top--bottom), 46%, 40%);
+  --brand-colors-explorer-dark: hsl(var(--top--bottom), 91%, 25%);
+  --platform-aliases-background: hsl(var(--hue), 5%, 7%);
+  --platform-aliases-shape-principal: hsl(var(--hue), 6%, 13%);
+}
+
+body {
+  font-family: Mulish;
+  font-size: 1.6rem;
+  width: 43rem;
+  height: 194.5rem;
+  margin-inline: auto;
+
+}
+
+#app {
+  display: grid;
+    grid-template:
+    "header header"
+    "main main"
+    "sidebar sidebar"
+    "footer footer";
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2.55rem;
+  align-items: center;
+  height: 7.2rem;
+  padding: 1.2rem 2.8rem;
+  background: var(--brand-colors-explorer-dark);
+
+  grid-area: header;
+}
+
+label {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+header form input {
+  border: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-style: none;
+  padding: 1.2rem 1.6rem 1.2rem 1.4rem;
+  border-radius: .4rem;
+  background: #4591ab;
+}
+
+input::placeholder {
+  color: #FFF;
+  font-size: 1.6rem;
+  line-height: 100%; 
+  font-weight: 600;
+  font-family: Mulish;
+}
+
+main {
+  grid-area: main;
+}
+
+main h1 {
+  color: var(--platform-aliases-shape-principal);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%; /* 38.4px */
+  margin-bottom: .8rem;
+}
+
+#button {
+  gap: .8rem;
+  display: flex;
+}
+
+main button {
+  border: 0;
+  padding: 12px;
+  gap: 1rem;
+  border-radius: 999px;
+  background: var(--brand-colors-explorer-dark, #065E7C);
+}
+
+main section {
+  margin: 3.1rem 6.6rem 3.1rem 2.2rem;
+}
+
+main p {
+  color: var(--platform-aliases-background);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; 
+
+  margin: 0 2.6rem 3.1rem 2.2rem;
+}
+
+.sidebar {
+  margin: 0 2.4rem 3.9rem 2.2rem;
+  display: grid;
+  row-gap: 3.1rem;
+
+  grid-area: sidebar;
+}
+
+.sidebar img {
+  width: 151px;
+  height: 84px;
+
+  transition-property: all;
+  transition-duration: .4s;
+  transition-delay: .1s;
+}
+
+.sidebar h1 {
+  color: var(--platform-aliases-shape-principal,);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%; /* 38.4px */
+}
+
+.sidebar h2 {
+  color: var(--platform-aliases-shape-principal,);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 160%; /* 28.8px */
+}
+
+.sidebar p {
+  color: var(--platform-aliases-background,);
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 22.4px */
+}
+
+#group {
+  display: flex;
+  gap: 1.6rem;
+}
+
+footer {
+  background-color: var(--footer-color-blue-clear);
+
+  display: grid;
+  height: 6.4rem;
+  justify-content: center;
+  align-items: center;
+
+  color: #FFF;
+
+  grid-area: footer;
+}
+
+@media (min-width: 1000px) {
+
+  body {
+    max-width: fit-content;
+    min-height: 100vh;
+    width: auto;
+    height: 100vh;
+  }
+
+  #center {
+    display: flex;
+    margin: 4.4rem 11rem;
+    column-gap: 3.4rem;
+  }
+
+  main {
+    max-width: 80rem;
+  }
+
+  main p {
+    margin: 0;
+  }
+
+  #catsun {
+    min-width: 80rem;
+    min-height: 41rem;
+  }
+
+  .sidebar {
+    min-width: 34rem;
+    max-width: 38.4rem;
+    margin: 0;
+    max-height: 61.5rem;
+  }
+
+  #individual {
+    min-height: 8rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+  }
+
+  header form input {
+    min-width: 108rem;
+  }
+
+  main section {
+    display: flex;
+    justify-content: space-between;
+    margin: 3.1rem 0;
+  }
+
+}
+header {
+  --startY: -100%;
+  animation: move 1.5s;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+  }
+}
+
+main, .sidebar, footer {
+  --delay: 1s;
+  animation: appear .4s var(--delay) backwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+#catsun:hover, .sidebar img:hover {
+  filter: saturate(200%) contrast(110%);
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.sidebar img:hover {
+  transform: rotate(-6deg);
+}
+
+#catsun {
+  transition-property: all;
+  transition-duration: .4s;
+  transition-delay: .1s;
+}
